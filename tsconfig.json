@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es5",
+    "lib": [ "es2015" ],
+    "outDir": "../dist/",
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "declaration": false,
+    "listFiles": false,
+    "typeRoots": [ "node_modules/@types" ],
+  },
+  "exclude": [
+    ".vscode",
+    ".git",
+    "node_modules"
+  ],
+  "compileOnSave": false,
+  "buildOnSave": false,
+  "atom": {
+    "rewriteTsconfig": false
+  }
+}
