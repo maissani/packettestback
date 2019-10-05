@@ -17,6 +17,37 @@ $ npm install
 ``` 
 
 ## Usage
+
+### Devellopment
+
+Create a .ENV File
 ``` Bash
-$ npm start
+MONGO_URL="mongodb://localhost:27017/packetaidev"
+``` 
+
+Run the server
+``` Bash
+$ yarn dev
+``` 
+Then run the test suite
+``` Bash
+$ yarn watch
+or
+$ yarn test
+``` 
+
+### Production
+
+Create a .ENV File
+``` Bash
+MONGO_URL="mongodb://localhost:27017/packetaiprod"
+``` 
+
+Compile the sources
+``` Bash
+$ yarn build
+``` 
+Then the server
+``` Bash
+$ yarn prod
 ``` 

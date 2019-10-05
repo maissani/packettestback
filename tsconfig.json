@@ -3,7 +3,7 @@
     "module": "commonjs",
     "target": "es5",
     "lib": [ "es2015" ],
-    "outDir": "../dist/",
+    "outDir": "dist/",
     "noImplicitAny": false,
     "sourceMap": true,
     "emitDecoratorMetadata": true,
@@ -11,7 +11,7 @@
     "moduleResolution": "node",
     "declaration": false,
     "listFiles": false,
-    "typeRoots": [ "node_modules/@types" ],
+    "typeRoots": [ "node_modules/@types" ]
   },
   "exclude": [
     ".vscode",
