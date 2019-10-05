@@ -48,7 +48,7 @@ Et si le temps me le permet une IA / Solution Mathématique pour jouer contre l'
 This technical test includes the latest powerfull tools.
 
 * **Typescript** - Superset of JavaScript which primarily provides optional static typing, classes and interfaces.
-* **Express.js**- Handles server-side rendering and integrated with Express.js
+* **Express.js**- Handle Requests
 * **Tslint** - The pluggable linting utility.
 * **Jest** - Javascript testing framework
 * **CucumberJS** - Behavior Driven Devellopment framework using Gerkin Syntax unit & functional tests
