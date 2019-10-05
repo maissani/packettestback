@@ -5,15 +5,20 @@ import PartyController from "./controllers/PartyController";
 import { logger } from "./helpers";
 require("dotenv").config();
 
+// To check that Mongo URL is set
 logger.info(process.env.MONGO_URL);
 
+// Create a connection to the database
 connect(
   process.env.MONGO_URL, {
     autoReconnect: true,
     useNewUrlParser: true,
+    useUnifiedTopology: true,
 });
 
 const app = express();
+
+// Only allow from authorized apps
 const allowedOrigins = [
   "https://packetaitest.mehdiaissani.com",
   "http://localhost:8080",
@@ -21,9 +26,11 @@ const allowedOrigins = [
   "http://localhost",
 ];
 
+// Handle Form encoded or JSON Post Data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// Cors Check
 app.use(cors({
   origin: (origin, callback) => {
     if (!origin) {
@@ -38,11 +45,13 @@ app.use(cors({
   },
 }));
 
+// Routes Definitions
 app.get("/party/create", PartyController.create);
 app.get("/party/:identifier", PartyController.getParty);
 app.post("/party/:identifier/move", PartyController.setCurrentMove);
 
-app.listen(3000, () => {
+// Express listening on port 3000
+app.listen(process.env.EXPRESS_PORT, () => {
   logger.log({
     level: "info",
     message: "The app is listening on port 3000!",

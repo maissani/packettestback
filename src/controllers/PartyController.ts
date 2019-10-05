@@ -1,19 +1,30 @@
 import { logger, uuid } from "../helpers";
 import { Party } from "../models/party";
 
+/**
+ * Create a party
+ *
+ * @author Mehdi AISSANI <contact@mehdiaissani.com>
+ *
+ * @param {any} req The request Object
+ * @param {any} res The response Object
+ *
+ * @returns {any} The response object corresponding to the current party
+ */
 const create = async (req: any, res: any) => {
   const createdParty = await Party.create({id: uuid(), moves: [], isStartedWithX: true});
   return res.json(createdParty);
 };
 
 /**
- * Get Party
  * Get the party with the identifier
+ *
  * @author Mehdi AISSANI <contact@mehdiaissani.com>
  *
- * @param {id} String The identifier of the party
+ * @param {any} req The request Object
+ * @param {any} res The response Object
  *
- * @returns {} Object corresponding to the current party
+ * @returns {any} The response object corresponding to the current party
  */
 const getParty =  async (req: any, res: any) => {
   const { identifier } =  req.params;
@@ -22,6 +33,16 @@ const getParty =  async (req: any, res: any) => {
   return res.json(currentParty);
 };
 
+/**
+ * Set the current move
+ *
+ * @author Mehdi AISSANI <contact@mehdiaissani.com>
+ *
+ * @param {any} req The request Object
+ * @param {any} res The response Object
+ *
+ * @returns {any} The response object corresponding to the current party
+ */
 const setCurrentMove = async (req: any, res: any) => {
   const {identifier} = req.params;
   const {vector} = req.body;
