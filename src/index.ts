@@ -2,7 +2,7 @@ import * as cors from "cors";
 import * as express from "express";
 import { connect } from "mongoose";
 import PartyController from "./controllers/PartyController";
-import { logger } from "./helpers";
+import { clientApiKeyValidation, logger } from "./helpers";
 require("dotenv").config();
 
 // To check that Mongo URL is set
@@ -29,7 +29,6 @@ const allowedOrigins = [
 // Handle Form encoded or JSON Post Data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 // Cors Check
 app.use(cors({
   origin: (origin, callback) => {
@@ -44,6 +43,7 @@ app.use(cors({
     return callback(null, true);
   },
 }));
+app.use(clientApiKeyValidation);
 
 // Routes Definitions
 app.get("/party/create", PartyController.create);
@@ -54,6 +54,6 @@ app.post("/party/:identifier/move", PartyController.setCurrentMove);
 app.listen(process.env.EXPRESS_PORT, () => {
   logger.log({
     level: "info",
-    message: "The app is listening on port 3000!",
+    message: `The API is listening on port ${process.env.EXPRESS_PORT}`,
   });
 });
