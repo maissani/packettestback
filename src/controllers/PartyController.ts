@@ -48,7 +48,7 @@ const setCurrentMove = async (req: any, res: any) => {
   const {vector} = req.body;
   logger.info(`identifier: ${identifier} with new vector: ${vector}`);
   const currentParty = await Party.findOne({id: identifier});
-  const movedVector =  vector.split(",").map((value: string) => parseInt(value, 10));
+  const movedVector = (Array.isArray(vector)) ? vector :  vector.split(",").map((value: string) => parseInt(value, 10));
   currentParty.moves.push(movedVector);
   const savedParty = await currentParty.save();
   return res.json(savedParty);
